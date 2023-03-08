@@ -114,7 +114,7 @@ const deleteCart = async function (req, res) {
     try {
         let userId = req.userId
         let cartPresent = await cartModel.findOne({ userId: userId })
-        if (!cartPresent) return res.status(404).send({ status: false, message: "cart not found for this user" })
+        if (!cartPresent) return res.status(404).send({ status: false, message: "Cart not found for this user" })
         await cartModel.findOneAndUpdate({ userId: userId }, { $set: { items: [], totalPrice: 0, totalItems: 0 } })
         return res.status(204).send()
     } catch (error) {
