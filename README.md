@@ -14,9 +14,11 @@ In this project we are changing how we send token with a request. Instead of usi
 Create a group database groupXDatabase. You can clean the db you previously used and resue that.
 This time each group should have a single git branch. Coordinate amongst yourselves by ensuring every next person pulls the code last pushed by a team mate. You branch will be checked as part of the demo. Branch name should follow the naming convention project/productsManagementGroupX
 Follow the naming conventions exactly as instructed.
+
 FEATURE I - User
 Models
 User Model
+
 { 
   fname: {string, mandatory},
   lname: {string, mandatory},
@@ -39,6 +41,7 @@ User Model
   createdAt: {timestamp},
   updatedAt: {timestamp}
 }
+
 User APIs
 POST /register
 Create a user document from request body. Request body must contain image.
@@ -47,6 +50,7 @@ Save password in encrypted format. (use bcrypt)
 Response format
 On success - Return HTTP status 201. Also return the user document. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 {
     "status": true,
     "message": "User created successfully",
@@ -75,6 +79,7 @@ On error - Return a suitable error message with a valid HTTP status code. The re
         "__v": 0
     }
 }
+
 POST /login
 Allow an user to login with their email and password.
 On a successful login attempt return the userId and a JWT token contatining the userId, exp, iat.
@@ -83,6 +88,7 @@ NOTE: There is a slight change in response body. You should also return userId i
 Response format
 On success - Return HTTP status 200 and JWT token in response body. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 {
     "status": true,
     "message": "User login successfull",
@@ -91,12 +97,14 @@ On error - Return a suitable error message with a valid HTTP status code. The re
         "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTYyODc2YWJkY2I3MGFmZWVhZjljZjUiLCJpYXQiOjE2MzM4NDczNzYsImV4cCI6MTYzMzg4MzM3Nn0.PgcBPLLg4J01Hyin-zR6BCk7JHBY-RpuWMG_oIK7aV8"
     }
 }
+
 GET /user/:userId/profile (Authentication required)
 Allow an user to fetch details of their profile.
 Make sure that userId in url param and in token is same
 Response format
 On success - Return HTTP status 200 and returns the user document. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 {
     "status": true,
     "message": "User profile details",
@@ -125,6 +133,7 @@ On error - Return a suitable error message with a valid HTTP status code. The re
         "__v": 0
     }
 }
+
 PUT /user/:userId/profile (Authentication and Authorization required)
 Allow an user to update their profile.
 A user can update all the fields
@@ -132,6 +141,7 @@ Make sure that userId in url param and in token is same
 Response format
 On success - Return HTTP status 200. Also return the updated user document. The response should be a JSON object like this
 On error - Return a suitable error message with a valid HTTP status code. The response should be a JSON object like this
+
 {
     "status": true,
     "message": "User profile updated",
@@ -160,6 +170,7 @@ On error - Return a suitable error message with a valid HTTP status code. The re
         "__v": 0
     }
 }
+
 Note: Bcrypt Send form-data
 
 FEATTURE II - Product
